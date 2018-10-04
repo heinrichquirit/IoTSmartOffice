@@ -1,7 +1,15 @@
+<<<<<<< HEAD:test website/main.py
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 import os
 
+=======
+import sys
+sys.path.insert(0, 'IoTSmartOffice/Python/cloud_api.py')
+
+import cloud_api
+from flask import Flask, url_for, redirect, render_template
+>>>>>>> cf4ec0f2fb205663cf8422210781a48166a3fa6d:website/main.py
 app = Flask(__name__)
 
 class ReusableForm(Form):
@@ -39,6 +47,7 @@ def patient():
 	name = 'Patient'
 	return render_template('patient.html', title=title, name=name)
 
+<<<<<<< HEAD:test website/main.py
 @app.route("/pat_register.html", methods=['GET', 'POST'])
 def hello():
     form = ReusableForm(request.form)
@@ -61,3 +70,8 @@ def hello():
 if __name__ == "__main__":
 	host = os.popen('hostname -I').read()
 	app.run(host=host, port=80, debug=False)
+=======
+if __name__ == '__main__':
+	connect_to_database()
+	app.run()
+>>>>>>> cf4ec0f2fb205663cf8422210781a48166a3fa6d:website/main.py

@@ -7,7 +7,7 @@ import os
 def connect_to_database():
     try:
         conn = mysql.connector.connect(
-            host='',database='', user='', password=''
+            host='35.189.38.227',database='iotsmartoffice', user='root', password=''
         )
 
         if conn.is_connected():
@@ -20,10 +20,9 @@ def connect_to_database():
     finally:
         conn.close()
 
+'''
 def insert_patient():
 
-
-'''
 def remove_patient():
 
 def insert_doctor():
