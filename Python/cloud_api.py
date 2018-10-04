@@ -1,29 +1,38 @@
-#todo
+'''from flask import Flask, request, jsonify
+from flask_sqlalchemy import  SQLAlchemy
+from flask_marshmallow import Marshmallow'''
+import mysql.connector
+import os
 
-def connect_to_database() {
-	
-}
+def connect_to_database(host, database, user, password):
+    try:
+        conn = mysql.connector.connect(
+            host=host,database=database, user=user, password=password
+        )
 
-def insert_patient() {
-	
-}
+        if conn.is_connected():
+            print('Connected to Google MySQL database')
+        
+    except Error as e:
+        print('Could not connect to Google MySQL database')
+        print(e)
 
-def remove_patient() {
-	
-}
+    finally:
+        conn.close()
 
-def insert_doctor() {
-	
-}
+'''
+def insert_patient():
 
-def remove_doctor() {
-	
-}
+def remove_patient():
 
-def create_appointment() {
-	
-}
+def insert_doctor():
 
-def remove_appointment() {
-	
-}
+def remove_doctor():
+
+def create_appointment():
+    
+def remove_appointment():
+'''
+
+def insert_patient():
+    sql = ''
