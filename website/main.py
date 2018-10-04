@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, 'IoTSmartOffice/Python/cloud_api.py')
+
+import cloud_api
 from flask import Flask, url_for, redirect, render_template
 app = Flask(__name__)
 
@@ -26,4 +30,5 @@ def patient():
 	return render_template('patient.html', title=title, name=name)
 
 if __name__ == '__main__':
-    app.run()
+	connect_to_database()
+	app.run()
