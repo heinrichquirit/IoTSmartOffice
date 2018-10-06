@@ -17,8 +17,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 USER   = 'root'
-PASS   = ''
-HOST   = ''
+PASS   = 'flaskp1o7'
+HOST   = '35.189.60.247'
 DBNAME = 'maps'
 app.config['SECRET_KEY'] = ''
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{}:{}@{}/maps'.format(USER,PASS,HOST,DBNAME)
