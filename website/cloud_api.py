@@ -16,6 +16,8 @@ def connect_to_database():
         user = 'heinrich'
         password = 'root'
         print('Attempting to connect to host ({}), database ({}), user ({}) Google Cloud SQL Database...'.format(host, database, user))
+        
+        
         global conn 
         conn = mysql.connector.connect(
             host=host, database=database, user=user, password=password
@@ -64,7 +66,7 @@ def connect_to_database():
     finally:
        conn.close()
 
-app.route('/templates')
+@app.route('/templates/pat_add_app.html')
 def insert_patient(
                     id, first_name, last_name, age, 
                     weight, gender, contact, disease, doctor_id):
@@ -75,7 +77,7 @@ def insert_patient(
                 );'''
     cur.execute(query)
 
-#def remove_patient():
+def remove_patient():
 
 #def insert_doctor():
 
