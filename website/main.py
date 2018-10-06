@@ -1,8 +1,10 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+from flask_bootstrap import Bootstrap
 import os
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 class ReusableForm(Form):
     name = TextField('Name:', validators=[validators.required()])
@@ -11,14 +13,14 @@ class ReusableForm(Form):
 
 @app.route('/')
 def index():
-    title = 'Home'
-    name = 'Home'
+    title = 'Medical Appointment System'
+    name = 'Medical Appointment System'
     return render_template('index.html', title=title, name=name)
 
 @app.route('/index.html')
 def home():
-    title = 'Home'
-    name = 'Home'
+    title = 'Medical Appointment System'
+    name = 'Medical Appointment System'
     return render_template('index.html', title=title, name=name)
 
 @app.route('/doctor.html')
@@ -72,7 +74,7 @@ def patient():
 @app.route("/pat_register.html", methods=['GET', 'POST'])
 def hello():
     form = ReusableForm(request.form)
- 
+
     print ("form.errors")
     if request.method == 'POST':
         name=request.form['name']
