@@ -1,9 +1,26 @@
-'''from flask import Flask, request, jsonify
-from flask_sqlalchemy import  SQLAlchemy
-from flask_marshmallow import Marshmallow'''
+from __future__ import print_function
+from apiclient.discovery import build
+from httplib2 import Http
+from oauth2client import file, client, tools
 import flask
 import mysql.connector
 import os
+
+try:
+    import argparse
+    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+except ImportError
+    flags = None
+
+current_time = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+SCOPES = 'https://www.googleapis.com/auth/calendar'
+store = file.Storage('storage.json')
+creds = store.get()
+if not creds or creds.invalid:
+    flow = client.flow_from_clientsecrets('client_secret.json', SCOPES)
+    creds = tools.run_flow(flow, store, flags) \
+            if flags else tools.run(flow, store)
+CAL = build('calendar', 'v3', http=creds.authorize(Http()))
 
 def connect_to_database():
 
@@ -20,6 +37,7 @@ def insert_patient() :
     }
 
 def remove_patient():
+    
 
 #def insert_doctor():
 
