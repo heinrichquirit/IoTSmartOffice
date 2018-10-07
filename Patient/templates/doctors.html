@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Doctors{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+    {% for doctor in doctors %}
+	<div class="card" style="width:20rem;">
+
+  	    <div class="card-body">
+    	        <h5 class="card-title">Dr. {{ doctor.firstname }} {{ doctor.lastname }}</h5>
+                <div class="card-header">{{ doctor.description }}</div>
+                <div class="card-body">Set an appointment below<br>
+		<form action="{{ url_for('patient_booking') }}" method="post">
+    		{{ form.csrf_token() }}
+		<input type="hidden" id="doctor_id" name="doctor_id" value="{{ doctor.id }}">
+ 		<input type="hidden" id="doctor_email" name="doctor_email" value="{{ doctor.email }}">
+ 		<input type="hidden" id="calendar_id" name="calendar_id" value="{{ doctor.calendar_id }}">
+		{{form.day}}
+		{{form.time}}
+		<button type="submit" class="btn btn-primary">Book Appointment</button>
+		</form>
+		</div> 
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
